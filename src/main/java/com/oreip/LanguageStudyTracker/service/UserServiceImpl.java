@@ -12,21 +12,21 @@ import java.util.Optional;
 @Service
 public class UserServiceImpl implements UserService{
 
-    private UserRepository userRepository;
+    private UserRepository repository;
 
     @Autowired
     public UserServiceImpl(UserRepository theRepository) {
-        userRepository = theRepository;
+        repository = theRepository;
     }
 
     @Override
     public List<User> findAll() {
-        return userRepository.findAll();
+        return repository.findAll();
     }
 
     @Override
     public User findByInt(int id) {
-       Optional<User> result = userRepository.findById(id);
+       Optional<User> result = repository.findById(id);
         if(result.isPresent()) {
             return result.get();
         } else {
@@ -37,12 +37,12 @@ public class UserServiceImpl implements UserService{
     @Override
     @Transactional
     public User save(User user) {
-        return userRepository.save(user);
+        return repository.save(user);
     }
 
     @Override
     @Transactional
     public void deleteById(int id) {
-        userRepository.deleteById(id);
+        repository.deleteById(id);
     }
 }
