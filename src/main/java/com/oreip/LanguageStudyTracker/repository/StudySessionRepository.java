@@ -3,5 +3,11 @@ package com.oreip.LanguageStudyTracker.repository;
 import com.oreip.LanguageStudyTracker.entity.StudySession;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface StudySessionRepository extends JpaRepository<StudySession, Integer> {
+    List<StudySession> findByUserId(int theId);
+
+    List<StudySession> findByUserIdAndLanguageId(int userId, int languageId);
+
 }
